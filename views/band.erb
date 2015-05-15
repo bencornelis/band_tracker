@@ -1,8 +1,33 @@
 <div class="row">
   <div class="col-md-6 col-offset-md-3">
-    <h4><%= @band.name %></h4>
+    <h3><%= @band.name %></h3>
     <hr>
+
+    <% if @band.venues.any? %>
+      <ul class="list-unstyled">
+        <% @band.venues.each do |venue| %>
+          <li class="float-left"><a href="/venues/<%=venue.id%>"> <%= venue.name %> </a></li>
+        <% end %>
+      </ul>
+    <% else %>
+      <h6>None yet</h6>
+    <% end %>
+
+    <form class="vert-margin" action="/bands/<%=@band.id%>/venues" method="post">
+      <input name="_method" type="hidden" value="patch">
+      <hr>
+      <h4>Unplayed Venues:</h4>
+        <% @band.unplayed_venues.each do |venue| %>
+        <div class="form-group">
+          <input type="checkbox" name="<%= venue.id %>" value="<%= venue.id %>"><%= venue.name %>
+        </div>
+        <% end %>
+      <button type="submit" id="add_band" class="btn btn-default btn-xs">
+        Add venues <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+      </button>
+    </form>
   </div>
+
   <div class="col-md-3 col-offset-md-1">
     <form action="/bands/<%=@band.id%>" method="post">
       <input name="_method" type="hidden" value="delete">

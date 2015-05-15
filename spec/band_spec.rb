@@ -15,4 +15,14 @@ describe(Band) do
     expect(band.name).to eq("Fleet Foxes")
   end
 
+  describe("#unplayed_venues") do
+    it("returns a list of venues the band hasn't played at") do
+      band = Band.create(name: "fleet foxes")
+      venue1 = Venue.create(name: "Crystal Ballroom")
+      venue2 = Venue.create(name: "McMenamins")
+      band.venues << venue2
+      expect(band.unplayed_venues).to eq([venue1])
+    end
+  end
+
 end

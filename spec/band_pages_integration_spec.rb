@@ -23,5 +23,17 @@ describe("the band path", type: :feature) do
       click_button("Remove band")
       expect(page).to have_no_content("Fleet Foxes")
     end
+
+    it("lets user add venues to the list of venues a band has played at") do
+      test_band = Band.create(name: "Fleet Foxes", origin: "Seattle", year_founded: 2006)
+      venue1 = Venue.create(name: "Crystal Ballroom", location: "Portland")
+      venue2 = Venue.create(name: "second venue", location: "San Francisco")
+      venue3 = Venue.create(name: "third venue", location: "San Diego")
+      visit("/bands/#{test_band.id}")
+      check(venue1.id)
+      check(venue3.id)
+      click_button("Add venues")
+      expect(page).to have_content("Crystal Ballroom third venue")
+    end
   end
 end

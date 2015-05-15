@@ -4,6 +4,11 @@ class Band < ActiveRecord::Base
   validates :name, presence: true
   before_save :capitalize
 
+
+  def unplayed_venues
+    unplayed_venues = Venue.all.select { |venue| !venues.include?(venue)}
+  end
+
 private
   def capitalize
     split_name_capitalized = name.split.map { |word| word.capitalize }

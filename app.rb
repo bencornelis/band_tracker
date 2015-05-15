@@ -27,6 +27,14 @@ delete "/bands/:id" do |id|
   redirect "/"
 end
 
+patch "/bands/:band_id/venues" do |band_id|
+  venue_ids = params.keys.select { |key| key.to_i != 0 }
+  new_venues = venue_ids.map { |venue_id| Venue.find(venue_id) }
+  band = Band.find(band_id)
+  band.venues << new_venues
+  redirect "/bands/#{band_id}"
+end
+
 post "/venues/new" do
   name = params["venue_name"]
   location = params["location"]
