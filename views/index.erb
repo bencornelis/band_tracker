@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-md-6 col-offset-md-3">
-    <h4>Bands</h4>
+    <h3>Bands</h3>
     <hr>
     <% if @bands.any? %>
       <ul class="list-unstyled">
@@ -23,7 +23,7 @@
       <div class="form-group">
         <input type="text" name="year_founded" class="form-control" placeholder="year founded">
       </div>
-      <button type="submit" id="add_band" class="btn btn-default">
+      <button type="submit" id="add_band" class="btn btn-success">
         Add band &nbsp<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
       </button>
     </form>
@@ -34,7 +34,7 @@
 
 <div class="row vert-margin">
   <div class="col-md-6 col-offset-md-3">
-    <h4>Venues</h4>
+    <h3>Venues</h3>
     <hr>
     <% if @venues.any? %>
       <ul class="list-unstyled">
@@ -54,7 +54,7 @@
       <div class="form-group">
         <input type="text" name="location" class="form-control" placeholder="location">
       </div>
-      <button type="submit" id="add_venue" class="btn btn-default">
+      <button type="submit" id="add_venue" class="btn btn-success">
         Add venue &nbsp<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
       </button>
     </form>

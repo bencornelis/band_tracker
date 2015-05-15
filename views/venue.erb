@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-md-6 col-offset-md-3">
-    <h3><%= @venue.name %>
+    <h3><%= @venue.name %> (<%= @venue.location %>)
       <hr>
       <br>
       <div class="button-bar">
@@ -62,7 +62,7 @@
               <input type="checkbox" name="<%= band.id %>" value="<%= band.id %>"><%= band.name %>
             </div>
           <% end %>
-        <button type="submit" id="add_band" class="btn btn-default btn-xs">
+        <button type="submit" id="add_band" class="btn btn-success btn-xs">
           Add bands <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
         </button>
       </form>
