@@ -15,6 +15,13 @@ describe("the venue path", type: :feature) do
     end
   end
   describe("viewing and editing a venue") do
+    it('lets user delete a venue') do
+      test_venue = Venue.create(name: "Crystal Ballroom")
+      visit("/venues/#{test_venue.id}")
+      click_button("Remove venue")
+      expect(page).to have_no_content("Crystal Ballroom")
+    end
+
     it("lets user add bands to the list of bands that have played at the venue") do
       test_venue = Venue.create(name: "Crystal Ballroom", location: "Portland")
       band1 = Band.create(name: "Fleet Foxes", origin: "Seattle", year_founded: 2006)
@@ -24,6 +31,15 @@ describe("the venue path", type: :feature) do
       check(band2.id)
       click_button("Add bands")
       expect(page).to have_content("The Beatles")
+    end
+
+    it('lets user change a venue name') do
+      test_venue = Venue.create(name: "Crystal Ballroom")
+      visit("/venues/#{test_venue.id}")
+      click_button("New venue name")
+      fill_in("new_name", with: "The Dungeon")
+      click_button("change_name")
+      expect(page).to have_content("The Dungeon")
     end
   end
 end

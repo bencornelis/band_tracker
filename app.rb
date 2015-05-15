@@ -52,6 +52,11 @@ get "/venues/:id" do |id|
   erb :venue
 end
 
+delete "/venues/:id" do |id|
+  Venue.destroy(id)
+  redirect "/"
+end
+
 patch "/venues/:venue_id/bands" do |venue_id|
   band_ids = params.keys.select { |key| key.to_i != 0 }
   new_bands = band_ids.map { |band_id| Band.find(band_id) }
@@ -65,4 +70,16 @@ post "/venues/new" do
   location = params["location"]
   Venue.create(name: name, location: location)
   redirect "/"
+end
+
+patch "/venues/:id" do |id|
+  new_name = params["new_name"]
+  Venue.find(id).update(name: new_name)
+  redirect "/venues/#{id}"
+end
+
+post "/venues/:id/edit" do |id|
+  @edit = true
+  @venue = Venue.find(id)
+  erb :venue
 end
