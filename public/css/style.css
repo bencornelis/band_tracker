@@ -17,3 +17,10 @@ body {
 .test {
   background: red;
 }
+
+
+#home {
+  position:fixed;
+  top:30px;
+  right:40px;
+}

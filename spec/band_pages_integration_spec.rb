@@ -35,5 +35,14 @@ describe("the band path", type: :feature) do
       click_button("Add venues")
       expect(page).to have_content("Crystal Ballroom third venue")
     end
+
+    it('lets user change a band name') do
+      test_band = Band.create(name: "Fleet Foxes", origin: "Seattle", year_founded: 2006)
+      visit("/bands/#{test_band.id}")
+      click_button("New band name")
+      fill_in("new_name", with: "The Fleet Foxes")
+      click_button("change_name")
+      expect(page).to have_content("The Fleet Foxes")
+    end
   end
 end

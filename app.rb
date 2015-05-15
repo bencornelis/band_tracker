@@ -27,6 +27,18 @@ delete "/bands/:id" do |id|
   redirect "/"
 end
 
+patch "/bands/:id" do |id|
+  new_name = params["new_name"]
+  Band.find(id).update(name: new_name)
+  redirect "/bands/#{id}"
+end
+
+post "/bands/:id/edit" do |id|
+  @edit = true
+  @band = Band.find(id)
+  erb :band
+end
+
 patch "/bands/:band_id/venues" do |band_id|
   venue_ids = params.keys.select { |key| key.to_i != 0 }
   new_venues = venue_ids.map { |venue_id| Venue.find(venue_id) }
