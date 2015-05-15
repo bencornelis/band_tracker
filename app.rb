@@ -47,6 +47,19 @@ patch "/bands/:band_id/venues" do |band_id|
   redirect "/bands/#{band_id}"
 end
 
+get "/venues/:id" do |id|
+  @venue = Venue.find(id)
+  erb :venue
+end
+
+patch "/venues/:venue_id/bands" do |venue_id|
+  band_ids = params.keys.select { |key| key.to_i != 0 }
+  new_bands = band_ids.map { |band_id| Band.find(band_id) }
+  venue = Venue.find(venue_id)
+  venue.bands << new_bands
+  redirect "/venues/#{venue_id}"
+end
+
 post "/venues/new" do
   name = params["venue_name"]
   location = params["location"]

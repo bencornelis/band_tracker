@@ -36,6 +36,8 @@
     </h3>
     <hr>
 
+    <h4>Venues played:</h4>
+    <hr>
     <% if @band.venues.any? %>
       <ul class="list-unstyled">
         <% @band.venues.each do |venue| %>
@@ -45,11 +47,14 @@
     <% else %>
       <h6>None yet</h6>
     <% end %>
-
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6 col-offset-md-3">
     <form class="vert-margin" action="/bands/<%=@band.id%>/venues" method="post">
       <input name="_method" type="hidden" value="patch">
       <hr>
-      <h4>Unplayed Venues:</h4>
+      <h4>Unplayed venues:</h4>
         <% @band.unplayed_venues.each do |venue| %>
           <div class="form-group">
             <input type="checkbox" name="<%= venue.id %>" value="<%= venue.id %>"><%= venue.name %>
@@ -60,5 +65,4 @@
       </button>
     </form>
   </div>
-
 </div>

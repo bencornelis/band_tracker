@@ -14,4 +14,16 @@ describe("the venue path", type: :feature) do
       expect(page).to have_content("Crystal Ballroom")
     end
   end
+  describe("viewing and editing a venue") do
+    it("lets user add bands to the list of bands that have played at the venue") do
+      test_venue = Venue.create(name: "Crystal Ballroom", location: "Portland")
+      band1 = Band.create(name: "Fleet Foxes", origin: "Seattle", year_founded: 2006)
+      band2 = Band.create(name: "The Beatles")
+      visit("/venues/#{test_venue.id}")
+      check(band1.id)
+      check(band2.id)
+      click_button("Add bands")
+      expect(page).to have_content("The Beatles")
+    end
+  end
 end
