@@ -1,9 +1,7 @@
 development:
   adapter: postgresql
   database: band_venues_development
-  # template: template0
 
 test:
   adapter: postgresql
   database: band_venues_test
-  # template: template0
