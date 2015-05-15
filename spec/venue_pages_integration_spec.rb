@@ -41,5 +41,25 @@ describe("the venue path", type: :feature) do
       click_button("change_name")
       expect(page).to have_content("The Dungeon")
     end
+
+    it('finds the best venue for a user based on their music tastes') do
+      venue1 = Venue.create(name: "Crystal Ballroom")
+      venue2 = Venue.create(name: "McMenamins")
+      moby = Band.create(name: "Moby")
+      fleet_foxes = Band.create(name: "Fleet Foxes")
+      the_beatles = Band.create(name: "The Beatles")
+      moby.genres.create(name: "electronic")
+      moby.genres.create(name: "blues")
+      fleet_foxes.genres.create(name: "folk")
+      the_beatles.genres.create(name: "folk")
+      the_beatles.genres.create(name: "pop")
+      venue1.bands << [moby, fleet_foxes]
+      venue2.bands << [fleet_foxes, the_beatles]
+
+      visit("/")
+      fill_in("search_genre", with: "folk")
+      click_button("Find out!")
+      expect(page).to have_content("McMenamins")
+    end
   end
 end

@@ -61,3 +61,15 @@
   </div>
 </div>
 <hr>
+
+<div class="col-md-6 col-offset-md-3">
+  <form class="form-inline" action="/venue/search">
+    <h4>Which venue is best for
+      <input type="text" name="search_genre" class="form-control input-sm" placeholder="some genre of"> music?
+      &nbsp&nbsp<button type="submit" class="btn btn-info btn-sm">Find out!</button>
+    </h4>
+  </form>
+  <% unless @best_venue == nil %>
+    <h5 class="text-success">The best venue for <%= @genre_name %> music is <%= @best_venue.name %>.</h5>
+  <% end %>
+</div>

@@ -96,3 +96,11 @@ post "/venues/:id/edit" do |id|
   @venue = Venue.find(id)
   erb :venue
 end
+
+get "/venue/search" do
+  @genre_name = params["search_genre"]
+  @best_venue = Venue.best_for_genre(@genre_name)
+  @venues = Venue.all
+  @bands = Band.all
+  erb :index
+end
