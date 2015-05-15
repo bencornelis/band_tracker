@@ -8,8 +8,16 @@ Dir[File.dirname(__FILE__) + '/../lib/*.rb'].each { |file| require file }
 RSpec.configure do |config|
   config.after(:each) do
 
-    Test.all().each() do |test|
-      test.destroy()
+    Band.all().each() do |band|
+      band.destroy()
+    end
+
+    Venue.all().each() do |venue|
+      venue.destroy()
+    end
+
+    Genre.all().each() do |genre|
+      genre.destroy()
     end
 
   end
