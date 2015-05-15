@@ -33,7 +33,7 @@ describe("the band path", type: :feature) do
       check(venue1.id)
       check(venue3.id)
       click_button("Add venues")
-      expect(page).to have_content("Crystal Ballroom third venue")
+      expect(page).to have_content("Crystal Ballroom Third Venue")
     end
 
     it('lets user change a band name') do
