@@ -15,4 +15,13 @@ describe("the band path", type: :feature) do
       expect(page).to have_content("Fleet Foxes")
     end
   end
+
+  describe("viewing and editing a band") do
+    it('lets user delete a band') do
+      test_band = Band.create(name: "Fleet Foxes", origin: "Seattle", year_founded: 2006)
+      visit("/bands/#{test_band.id}")
+      click_button("Remove band")
+      expect(page).to have_no_content("Fleet Foxes")
+    end
+  end
 end

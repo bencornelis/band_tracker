@@ -9,11 +9,21 @@ get "/" do
   erb :index
 end
 
+get "/bands/:id" do |id|
+  @band = Band.find(id)
+  erb :band
+end
+
 post "/bands/new" do
   name = params["band_name"]
   origin = params["origin"]
   year_founded = params["year_founded"]
   Band.create(name: name, origin: origin, year_founded: year_founded)
+  redirect "/"
+end
+
+delete "/bands/:id" do |id|
+  Band.destroy(id)
   redirect "/"
 end
 

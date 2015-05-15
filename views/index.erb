@@ -5,14 +5,13 @@
     <% if @bands.any? %>
       <ul class="list-unstyled">
         <% @bands.each do |band| %>
-          <li class="float-left"><a href="/"> <%= band.name %> </a></li>
+          <li class="float-left"><a href="/bands/<%=band.id%>"> <%= band.name %> </a></li>
         <% end %>
       </ul>
     <% else %>
       <h6>None yet</h6>
     <% end %>
   </div>
-  <hr>
   <div class="col-md-3 col-offset-md-1">
     <form action="/bands/new" method="post">
       <div class="form-group">
@@ -30,6 +29,8 @@
     </form>
   </div>
 </div>
+<hr>
+
 
 <div class="row vert-margin">
   <div class="col-md-6 col-offset-md-3">
@@ -38,14 +39,13 @@
     <% if @venues.any? %>
       <ul class="list-unstyled">
         <% @venues.each do |venue| %>
-          <li class="float-left"><a href="#"> <%= venue.name %> </a></li>
+          <li class="float-left"><a href="/venues/<%=venue.id%>"> <%= venue.name %> </a></li>
         <% end %>
       </ul>
     <% else %>
       <h6>None yet</h6>
     <% end %>
   </div>
-  <hr>
   <div class="col-md-3 col-offset-md-1">
     <form action="/venues/new" method="post">
       <div class="form-group">
@@ -60,3 +60,4 @@
     </form>
   </div>
 </div>
+<hr>
