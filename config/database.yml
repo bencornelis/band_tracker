@@ -1,9 +1,9 @@
 development:
   adapter: postgresql
-  database: foo_development
+  database: band_venues_development
   # template: template0
 
 test:
   adapter: postgresql
-  database: foo_test
+  database: band_venues_test
   # template: template0
