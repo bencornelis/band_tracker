@@ -1,0 +1,19 @@
+.clear {
+  clear:both;
+}
+
+.float-left {
+  float:left;
+}
+
+body {
+  margin: 50px;
+}
+
+.vert-margin {
+  margin-top: 50px;
+}
+
+.test {
+  background: red;
+}

@@ -1,1 +1,62 @@
-hello world!
+<div class="row">
+  <div class="col-md-6 col-offset-md-3">
+    <h4>Bands</h4>
+    <hr>
+    <% if @bands.any? %>
+      <ul class="list-unstyled">
+        <% @bands.each do |band| %>
+          <li class="float-left"><a href="/"> <%= band.name %> </a></li>
+        <% end %>
+      </ul>
+    <% else %>
+      <h6>None yet</h6>
+    <% end %>
+  </div>
+  <hr>
+  <div class="col-md-3 col-offset-md-1">
+    <form action="/bands/new" method="post">
+      <div class="form-group">
+        <input type="text" name="band_name" class="form-control" placeholder="band name">
+      </div>
+      <div class="form-group">
+        <input type="text" name="origin" class="form-control" placeholder="origin city">
+      </div>
+      <div class="form-group">
+        <input type="text" name="year_founded" class="form-control" placeholder="year founded">
+      </div>
+      <button type="submit" id="add_band" class="btn btn-default">
+        Add band <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+      </button>
+    </form>
+  </div>
+</div>
+
+<div class="row vert-margin">
+  <div class="col-md-6 col-offset-md-3">
+    <h4>Venues</h4>
+    <hr>
+    <% if @venues.any? %>
+      <ul class="list-unstyled">
+        <% @venues.each do |venue| %>
+          <li class="float-left"><a href="#"> <%= venue.name %> </a></li>
+        <% end %>
+      </ul>
+    <% else %>
+      <h6>None yet</h6>
+    <% end %>
+  </div>
+  <hr>
+  <div class="col-md-3 col-offset-md-1">
+    <form action="/venues/new" method="post">
+      <div class="form-group">
+        <input type="text" name="venue_name" class="form-control" placeholder="venue name">
+      </div>
+      <div class="form-group">
+        <input type="text" name="location" class="form-control" placeholder="location">
+      </div>
+      <button type="submit" id="add_venue" class="btn btn-default">
+        Add venue <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+      </button>
+    </form>
+  </div>
+</div>

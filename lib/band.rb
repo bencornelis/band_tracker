@@ -6,7 +6,7 @@ class Band < ActiveRecord::Base
 
 private
   def capitalize
-    split_name_capitalized = name.split.map { |word| word.capitalize! }
+    split_name_capitalized = name.split.map { |word| word.capitalize }
     self.name = split_name_capitalized.join(' ')
   end
 end
