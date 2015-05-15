@@ -16,13 +16,20 @@ body {
   margin-top: 50px;
 }
 
+.vert-margin-sm {
+  margin-top: 20px;
+}
+
 .test {
   background: red;
 }
 
+.button-bar form {
+  margin-bottom: 5px;
+}
 
 #home {
   position:fixed;
   top:30px;
-  right:40px;
+  left:40px;
 }

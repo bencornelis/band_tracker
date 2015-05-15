@@ -44,5 +44,17 @@ describe("the band path", type: :feature) do
       click_button("change_name")
       expect(page).to have_content("The Fleet Foxes")
     end
+
+    it('processes user entry to add a musical genre to a band') do
+      test_band = Band.create(name: "Fleet Foxes", origin: "Seattle", year_founded: 2006)
+      visit("/bands/#{test_band.id}")
+      click_button("Add musical genre")
+      fill_in("genre_name", with: "folk")
+      click_button("add_genre")
+      click_button("Add musical genre")
+      fill_in("genre_name", with: "blues")
+      click_button("add_genre")
+      expect(page).to have_content("folk, blues")
+    end
   end
 end

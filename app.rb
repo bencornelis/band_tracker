@@ -33,10 +33,23 @@ patch "/bands/:id" do |id|
   redirect "/bands/#{id}"
 end
 
-post "/bands/:id/edit" do |id|
-  @edit = true
+post "/bands/:id/edit/name" do |id|
+  @edit_name = true
   @band = Band.find(id)
   erb :band
+end
+
+post "/bands/:id/edit/genres" do |id|
+  @edit_genre = true
+  @band = Band.find(id)
+  erb :band
+end
+
+patch "/bands/:id/genres" do |id|
+  band = Band.find(id)
+  genre_name = params["genre_name"]
+  band.genres.create(name: genre_name)
+  redirect "/bands/#{id}"
 end
 
 patch "/bands/:band_id/venues" do |band_id|
